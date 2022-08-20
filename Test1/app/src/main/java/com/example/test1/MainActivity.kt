@@ -2,6 +2,7 @@ package com.example.test1
 
 import android.app.Activity
 import android.content.Intent
+import android.media.DeniedByServerException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -89,6 +90,11 @@ class MainActivity : AppCompatActivity() {
     fun switchActivity(view: View?){
         val intent = Intent(this, SecondActivity::class.java)
         intent.putExtra("nombre", input.text.toString())
+        startActivity(intent)
+    }
+
+    fun switchToDB(view: View?){
+        val intent = Intent(this, DBActivity::class.java)
         startActivity(intent)
     }
 }
