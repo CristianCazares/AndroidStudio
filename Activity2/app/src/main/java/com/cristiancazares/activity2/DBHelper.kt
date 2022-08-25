@@ -2,17 +2,13 @@ package com.cristiancazares.activity2
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
-import androidx.core.content.contentValuesOf
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
 
     companion object {
         private const val DB_FILE = "Activity2.db"
-
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -33,6 +29,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
         db?.execSQL(queryGreets)
     }
 
+    //=====HOBBY QUERIES===========
     override fun onUpgrade(db: SQLiteDatabase?, last: Int, current: Int) {
         val query  = "DROP TABLE IF EXISTS ?"
         val args = arrayOf("Hobbies")
@@ -42,6 +39,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
     }
 
     fun saveHobby(name: String){
+        //Cursor to check if there's a hobby on the table "Hobbies"
         val cursor = readableDatabase.query("Hobbies", null, null, null, null, null, null)
 
         if (cursor.moveToFirst()){
@@ -58,9 +56,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
     }
 
     fun getHobby(): String {
+        //Always get the first hobbby
         val query = "SELECT * FROM Hobbies WHERE id = 1;"
         val cursor = readableDatabase.rawQuery(query, null)
 
+        //If there's a hobby return it, if not return blank
         if(cursor.moveToFirst()){
             return cursor.getString(1) //Returns second column of the query result
         }
@@ -74,7 +74,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
     }
 
 
-
+    //=====FRIEND QUERIES==========
     fun saveFriend(name: String, hobby: String){
         val values = ContentValues()
         values.put("name", name)
@@ -97,11 +97,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
     }
 
     fun getFriendHobby(name: String) : String{
+        //Use "searchFriend(name)" to get de ID of a name and built a query to find the hobby
         val query = "SELECT hobby FROM Friends WHERE id = ${searchFriend(name)};"
         val cursor = readableDatabase.rawQuery(query, null)
 
         if(cursor.moveToFirst()){
-            return cursor.getString(0) //Returns second column of the query result
+            return cursor.getString(0)
         }
         return "Hobby not found!"
     }
@@ -112,7 +113,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
         return writableDatabase.delete("Friends", clause, args)
     }
 
+
+    //=====GREET QUERIES===========
     fun getGreet(id: Int) : String{
+        //Get a Greet from database given an id
         val query = "SELECT * FROM Greets WHERE id = ${id};"
         val cursor = readableDatabase.rawQuery(query, null)
 
@@ -120,10 +124,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
             return cursor.getString(1) //Returns second column of the query result
         }
         return ""
-
     }
 
     fun saveGreet(id: Int, greet: String){
+        //Basically an arbitrary way to populate the "Greets" table with given id's and text.
         val values = ContentValues()
         values.put("id", id)
         values.put("greet", greet)

@@ -27,15 +27,16 @@ class MyFriendsActivity : AppCompatActivity() {
     fun searchFriend(view: View?){
         val idFound = db.searchFriend(inputFriendName.text.toString())
 
-        //Look for hobby
-        var hobby = ""
+        //If friend in database look for their hobby and return it,
+        //if not, return "Friend not found!"
+        var response = ""
         if (idFound != -1){
-            hobby = db.getFriendHobby(inputFriendName.text.toString())
+            response = db.getFriendHobby(inputFriendName.text.toString())
         }else{
-            hobby = "Friend not found!"
+            response = "Friend not found!"
         }
 
-        Toast.makeText(this, hobby, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
     }
 
     fun deleteFriend(view: View?){
