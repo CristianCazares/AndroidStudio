@@ -26,7 +26,7 @@ class MyHobbiesActivity : AppCompatActivity() {
 
     fun saveHobby(view: View?){
         db.saveHobby(inputHobby.text.toString())
-        Toast.makeText(this, "Saving data...", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Hobby saved.", Toast.LENGTH_SHORT).show()
         updateHobby()
     }
 

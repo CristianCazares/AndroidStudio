@@ -96,6 +96,16 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
         return result
     }
 
+    fun getFriendHobby(name: String) : String{
+        val query = "SELECT hobby FROM Friends WHERE id = ${searchFriend(name)};"
+        val cursor = readableDatabase.rawQuery(query, null)
+
+        if(cursor.moveToFirst()){
+            return cursor.getString(0) //Returns second column of the query result
+        }
+        return "Hobby not found!"
+    }
+
     fun deleteFriend(name: String) : Int{
         val clause = "name = ?"
         val args = arrayOf(name)
