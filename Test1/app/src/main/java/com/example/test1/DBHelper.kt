@@ -4,8 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
-import java.security.AccessControlContext
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE, null, 1) {
     companion object {
