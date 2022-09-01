@@ -61,7 +61,6 @@ class PuppyFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-
         listener = if(context is Callback){
             context
         }else{

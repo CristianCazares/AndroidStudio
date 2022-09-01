@@ -1,5 +1,6 @@
 package com.cristiancazares.fragments
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity(), PuppyFragment.Callback {
 
     fun greet(view: View?){
         dataFragment.greet(this)
+    }
+
+    fun switchToRecycler(view: View?){
+        val intent = Intent(this, RecyclerActivity::class.java)
+        startActivity(intent)
     }
 
     companion object{
