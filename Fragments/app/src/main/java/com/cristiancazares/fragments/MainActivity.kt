@@ -3,10 +3,11 @@ package com.cristiancazares.fragments
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PuppyFragment.Callback {
 
     lateinit var dataFragment: DataFragmen
     lateinit var puppyFragment: PuppyFragment
@@ -44,16 +45,18 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
 
         }
-
-
     }
 
-    fun greet0(view: View?){
+    fun greet(view: View?){
         dataFragment.greet(this)
     }
 
     companion object{
         private const val TAG = "lilFragment"
+    }
+
+    override fun run() {
+        Toast.makeText(this, "Hello from the activity", Toast.LENGTH_SHORT).show()
     }
 
 }

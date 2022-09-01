@@ -2,12 +2,15 @@ package com.cristiancazares.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.telecom.Call
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import java.lang.RuntimeException
 
 private const val NAME = "name"
 private const val AGE = "age"
@@ -20,6 +23,8 @@ private const val AGE = "age"
 class PuppyFragment : Fragment() {
     private var name: String? = null
     private var age: Int? = null
+
+    private var listener: Callback? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +51,26 @@ class PuppyFragment : Fragment() {
             text = age.toString()
         }
 
+        view.findViewById<Button>(R.id.buttonPuppy).setOnClickListener {
+            listener?.run()
+        }
+
         return view
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+
+        listener = if(context is Callback){
+            context
+        }else{
+            throw  RuntimeException("PLEASE IMPLEMENT THE INTERFACE")
+        }
+    }
+
+    interface Callback {
+        fun run()
     }
 
     companion object {
@@ -59,9 +83,5 @@ class PuppyFragment : Fragment() {
             puppy.arguments = data
             return puppy
         }
-    }
-
-    fun greet(context: Context){
-        Toast.makeText(context, "Greetings from the fragment", Toast.LENGTH_SHORT).show()
     }
 }
