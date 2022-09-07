@@ -28,11 +28,5 @@
         "name": "Cypher",
         "role": "Sentinel",
         "country": "Morocco"
-    },
-    {
-        "id": 1,
-        "name": "Astra",
-        "role": "Controller",
-        "country": "Ghana"
     }
 ]
