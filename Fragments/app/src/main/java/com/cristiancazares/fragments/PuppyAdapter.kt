@@ -1,5 +1,6 @@
 package com.cristiancazares.fragments
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
-class PuppyAdapter(var puppies: ArrayList<String>)
+class PuppyAdapter( var puppies: ArrayList<String>,
+                    var listener: View.OnClickListener)
     : RecyclerView.Adapter<PuppyAdapter.PuppyViewHolder>() {
     class PuppyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var text1 : TextView
@@ -26,6 +28,13 @@ class PuppyAdapter(var puppies: ArrayList<String>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PuppyViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row, parent, false)
+
+        view.setOnClickListener(listener)
+
+        val viewHolder = PuppyViewHolder(view)
+        viewHolder.button.setOnClickListener {
+            Log.wtf("BTN", "Hello from a row")
+        }
 
         return PuppyViewHolder(view)
     }

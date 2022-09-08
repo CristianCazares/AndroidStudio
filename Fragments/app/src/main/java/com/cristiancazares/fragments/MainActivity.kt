@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity(), PuppyFragment.Callback {
                 newFragment = dataFragment
 
             val transaction = supportFragmentManager.beginTransaction()
-            /*transaction.remove(currentFragment)
-            transaction.add(R.id.fragmentContainerView, newFragment, TAG)*/
 
             transaction.replace(R.id.fragmentContainerView, newFragment, TAG)
             transaction.commit()
@@ -55,6 +53,11 @@ class MainActivity : AppCompatActivity(), PuppyFragment.Callback {
     fun switchToRecycler(view: View?){
         val intent = Intent(this, RecyclerActivity::class.java)
         startActivity(intent)
+    }
+
+    fun switchToAPI(view: View?){
+        val i = Intent(this, ApiActivity::class.java)
+        startActivity(i)
     }
 
     companion object{
