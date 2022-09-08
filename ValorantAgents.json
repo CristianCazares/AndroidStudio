@@ -28,5 +28,89 @@
         "name": "Cypher",
         "role": "Sentinel",
         "country": "Morocco"
+    },
+    {
+        "id": 6,
+        "name": "Fade",
+        "role": "Initiator",
+        "country": "Turkey"
+    },
+    {
+        "id": 7,
+        "name": "Jett",
+        "role": "Duelist",
+        "country": "South Korea"
+    },
+    {
+        "id": 8,
+        "name": "KAY/0",
+        "role": "Initiator",
+        "country": "Unknown"
+    },
+    {
+        "id": 9,
+        "name": "Killjoy",
+        "role": "Sentinel",
+        "country": "Germany"
+    },
+    {
+        "id": 10,
+        "name": "Neon",
+        "role": "Duelist",
+        "country": "Philipines"
+    },
+    {
+        "id": 11,
+        "name": "Omen",
+        "role": "Controller",
+        "country": "Unknown"
+    },
+    {
+        "id": 12,
+        "name": "Phoenix",
+        "role": "Duelist",
+        "country": "United Kingdom"
+    },
+    {
+        "id": 13,
+        "name": "Raze",
+        "role": "Duelist",
+        "country": "Brazil"
+    },
+    {
+        "id": 14,
+        "name": "Reyna",
+        "role": "Duelist",
+        "country": "Mexico"
+    },
+    {
+        "id": 15,
+        "name": "Sage",
+        "role": "Duelist",
+        "country": "China"
+    },
+    {
+        "id": 16,
+        "name": "Skye",
+        "role": "Initiator",
+        "country": "Australia"
+    },
+    {
+        "id": 17,
+        "name": "Sova",
+        "role": "Initiator",
+        "country": "Russia"
+    },
+    {
+        "id": 18,
+        "name": "Viper",
+        "role": "Controller",
+        "country": "USA"
+    },
+    {
+        "id": 19,
+        "name": "Yoru",
+        "role": "Duelist",
+        "country": "Japan"
     }
 ]
